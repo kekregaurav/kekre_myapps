@@ -1,5 +1,6 @@
 package arraystring;
 
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.SortedSet;
@@ -9,9 +10,8 @@ public class PanagramString {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-         String str = "Jived fox nymph grabs quick waltz";
+         String str = "Jived fox nymph grabs quick walt";
          char [] a = str.toLowerCase().toCharArray();
-         Set<Character> s = new LinkedHashSet<Character>();
          SortedSet<Character> t = new TreeSet<Character>();
          
          //Add all the alphabets from a to z in a sorted Set
@@ -25,20 +25,22 @@ public class PanagramString {
 	    	 if(a[i] == ' ')
 	    		 continue;
 	    	 
-	    	 s.add(new Character(a[i]));//add the alphabet from the sorted set
 	    	 t.remove(new Character(a[i]));//remove the alphabet from the sorted set
 	    	 
-	    	 if(s.size() == 26){//break from loop when all 26 alphabets are added
+	    	 if(t.size() == 0){//break from loop when all 26 alphabets are added
 	    		 
 	    		 break;
 	    	 }
 	     }
 	     
-	     if(s.size() == 26){
+	     if(t.size() == 0){
 			 System.out.println("Is Panagram !!!");
 			
 		 }else{
-			 System.out.println("NOT Panagram !!!" + t);
+			Iterator i = t.iterator();
+			while(i.hasNext()) {
+				System.out.print(i.next());
+			}
 		 }
          
         
