@@ -6,9 +6,9 @@ import java.util.Hashtable;
 public class CheckBoard {
 
 	public static void main(String[] args) {
-		CheckBoard checkBoard = new CheckBoard();
+		
 		String word = "ABCCED";
-		checkBoard.doesItExists(getBoard(), word);
+		doesItExists(getBoard(), word);
 		
 
 	}
@@ -22,16 +22,16 @@ public class CheckBoard {
 	}
     
 	
-	private void doesItExists(char[][] board, String word) {
+	private static void doesItExists(char[][] board, String word) {
 		if (doesWrdExists(word, createHashTable(board, 3, 4))) {
-			System.out.println("Exists");
+			System.out.println("True");
 		} else {
-			System.out.println("Does not exists");
+			System.out.println("False");
 		}
 	}
 	
 	
-	private boolean doesWrdExists(String word, Hashtable<Integer, ArrayList<PosXY>> hashtable) {
+	private static boolean doesWrdExists(String word, Hashtable<Integer, ArrayList<PosXY>> hashtable) {
 		if(word == null){
 			return true;
 		}
@@ -51,7 +51,7 @@ public class CheckBoard {
 	
 	//This method calls itself recursively for each substring of the word to check if it exists in the matrix. 
 
-	private boolean isSubStrOfWrdExists(String substring, Hashtable<Integer, ArrayList<PosXY>> hashtable,
+	private static boolean isSubStrOfWrdExists(String substring, Hashtable<Integer, ArrayList<PosXY>> hashtable,
 			PosXY position) {
 		if(substring.equals("")){
 			return true;
@@ -90,7 +90,7 @@ public class CheckBoard {
 	}
 	
 	
-	public Hashtable<Integer, ArrayList<PosXY>> createHashTable(char[][] board, int length, int width){
+	public static Hashtable<Integer, ArrayList<PosXY>> createHashTable(char[][] board, int length, int width){
 		Hashtable<Integer, ArrayList<PosXY>> occurancePositions = new Hashtable<Integer,ArrayList<PosXY>>(26);
 		for(int i=0;i<length;i++){
 			for(int j=0;j<width;j++){
@@ -98,7 +98,6 @@ public class CheckBoard {
 				if(list == null){
 					list = new ArrayList<PosXY>();
 					occurancePositions.put(board[i][j] -'A', list);
-					System.out.println((board[i][j] -'A'));
 				}
 				list.add(new PosXY(i, j));
 			}
@@ -107,16 +106,16 @@ public class CheckBoard {
 	}
 	
 	//To store the positions of 2D array and to keep track if that position is already traversed or not. 
-	class PosXY{
-		int x;
-		int y;
-		boolean visited;
-		
-		public PosXY(int x,int y) {
-			this.x = x;
-			this.y = y;
-			visited = false;
-		}
-	}
+}
 
+class PosXY{
+	int x;
+	int y;
+	boolean visited;
+	
+	public PosXY(int x,int y) {
+		this.x = x;
+		this.y = y;
+		visited = false;
+	}
 }

@@ -9,20 +9,27 @@ import java.util.TreeSet;
 public class PanagramString {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-         String str = "Jived fox nymph grabs quick walt";
-         char [] a = str.toLowerCase().toCharArray();
+		String str = "Jived;=: fox nymph grabs quick walt";
+		isPanagram(str);
+	}
+	
+	public static void isPanagram(String str) {
+		
+
+		 char [] a = str.toLowerCase().toCharArray();
          SortedSet<Character> t = new TreeSet<Character>();
          
          //Add all the alphabets from a to z in a sorted Set
          for(int i=97; i<123; i++){
         	
         	t.add(new Character((char)i));
-        }
+          }
          
 	     for(int i=0; i<a.length; i++){
 	    	 
-	    	 if(a[i] == ' ')
+	    	 int k = a[i];
+	    	 
+	    	 if(k<97 || k>123)
 	    		 continue;
 	    	 
 	    	 t.remove(new Character(a[i]));//remove the alphabet from the sorted set
@@ -43,7 +50,6 @@ public class PanagramString {
 			}
 		 }
          
-        
-	}
+     }
 
 }
