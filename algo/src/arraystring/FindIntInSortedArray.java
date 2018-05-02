@@ -18,8 +18,8 @@ public class FindIntInSortedArray {
 	    	if(p == pArr[end])
 	    		return end;
 	    	
-	    	if(p > pArr[(beg+end)/2]){
-	    		beg = (beg+end)/2 + 1;
+	    	if(p >= pArr[(beg+end)/2]){
+	    		beg = (beg+end)/2;
 	    		
 	    	} else if(p < pArr[end/2]){
 	    		end = end/2 -1;
@@ -34,7 +34,7 @@ public class FindIntInSortedArray {
      
 		int [] a = {10, 20, 30, 40, 50, 60, 70, 80, 100};
 		
-		int pos = binSearch(a, 100);
+		int pos = binSearch(a, 20);
 	    System.out.println("The int found at position : " + pos);
 	}
 
